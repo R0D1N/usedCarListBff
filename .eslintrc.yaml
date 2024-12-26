@@ -1,0 +1,23 @@
+env:
+  node: true
+  browser: false
+parserOptions:
+  ecmaVersion: 2021
+  sourceType: module
+
+extends:
+  - airbnb-base
+  - "plugin:prettier/recommended"
+rules:
+  prettier/prettier: error
+  no-magic-numbers:
+    - error
+    - ignore:
+        - 0
+        - 1
+      ignoreDefaultValues: true
+  import/extensions:
+    - error
+    - always
+  no-underscore-dangle:
+    - error
