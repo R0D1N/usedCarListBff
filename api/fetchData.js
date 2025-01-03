@@ -1,5 +1,3 @@
-export { getData, postData };
-
 const getFetchOptions = {
   headers: {
     "Content-Type": "application/json",
@@ -10,7 +8,7 @@ const getFetchOptions = {
 const postFetchOptions = {
   headers: {
     "Content-Type": "application/json",
-    "x-auth-key": "3qcxIHvz6tHWeF5lHOPCaJ0xn10iyTfy", // TODO: hardcode
+    "x-auth-key": "3qcxIHvz6tHWeF5lHOPCaJ0xn10iyTfy",
   },
   method: "POST",
 };
@@ -20,10 +18,9 @@ const DEFAULT_ERROR = "Unknown error";
 const get =
   (options) =>
   async ({ url, query, errorMessage = DEFAULT_ERROR }) => {
-    const params = new URLSearchParams(query);
-    const urlWithParams = `${url}?${params.toString()}`;
-    console.log(urlWithParams);
     try {
+      const params = new URLSearchParams(query);
+      const urlWithParams = `${url}?${params.toString()}`;
       const response = await fetch(urlWithParams, options);
       if (!response.ok) {
         throw new Error(`Error: ${errorMessage}`);
@@ -58,3 +55,5 @@ const post =
 
 const getData = get(getFetchOptions);
 const postData = post(postFetchOptions);
+
+export { getData, postData };

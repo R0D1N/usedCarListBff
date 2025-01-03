@@ -5,19 +5,20 @@ const getCarsListService = async ({ query }) => {
 };
 
 const getCarByIdService = async (id) => {
-  const cars = [
-    {
-      id: 1,
-      name: "Audi A4",
-      brand: "Audi",
-      model: "A4",
-      year: 2021,
-      color: "Black",
-      price: 10000,
-      location: "USA",
-    },
-  ];
-  return cars;
+  return apiMethods.getCarById({ query: { carid: id } });
 };
 
-export { getCarsListService, getCarByIdService };
+const getBrandListService = async () => {
+  return apiMethods.getBrands();
+};
+
+const getSeriesListService = async (id) => {
+  return apiMethods.getSeries({ query: { brandid: id } });
+};
+
+export {
+  getCarsListService,
+  getCarByIdService,
+  getBrandListService,
+  getSeriesListService,
+};
