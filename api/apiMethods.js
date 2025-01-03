@@ -2,7 +2,8 @@ import carsApiConfig from "./carsApiConfig.js";
 
 const endpointReducer = (accumulator, endpoint) => {
   const { name, url, method, errorMessage } = endpoint;
-  accumulator[name] = ({ query }) => method({ url, errorMessage, query });
+  accumulator[name] = ({ query = {} } = {}) =>
+    method({ url, errorMessage, query });
   return accumulator;
 };
 
